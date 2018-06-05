@@ -89,7 +89,7 @@ int verificaValores(int qtdElementos, Pilha *pilha){
     }
 
     //Verifica se existe ao menos um numero zero.
-    while (pilha->elemento->valor == 0 & continua == TRUE){
+    while (pilha->elemento->valor == 0 && continua == TRUE){
         quantidadeN++;
         qtdElementos--;
         if (qtdElementos > 0){
