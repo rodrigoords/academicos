@@ -71,7 +71,7 @@ void libera(Pilha *pilha){
 //                             VALIDAÇÃO                                   //
 /***************************************************************************/
 int verificaValores(int qtdElementos, Pilha *pilha){
-    // De acordo com a regra apresentada { 01^m0^n1^m | n,m > 0 } temos que
+    // De acordo com a regra apresentada { 01^m0^n1^m | n,m >= 1 } temos que
     // a pilha deve ter como primeiro elmento de entrada o valor 0, seguindo 
     // de um ou mais numeros uns, um ou mais zeros e por ultimo ter inserido
     // a quantidade exata de numeros uns já inseridos anteriormente.
@@ -128,7 +128,7 @@ int verificaValores(int qtdElementos, Pilha *pilha){
 
 void assertValor(char * cenario, int esperado, int atual){
     if(esperado == atual) printf("\n\nCenario: %s \n Sucesso!\n\n", cenario);
-    else printf("\n\nCenario: %s \n Falhou!\n\n", cenario);
+    else printf("\n\nCenario: %s \n Falha!\n\n", cenario);
 
     printf("********************************************************\n\n");
 }
@@ -147,14 +147,14 @@ void printPilha(Pilha *pilha){
 
 void testes(){
     printf("********************************************************\n");
-    printf("Realizando testes automáticos\n");
+    printf("Realizando testes automáticos do automato de pilha\n");
     printf("********************************************************\n");
 
     Pilha *pilha = cria();
     char * cenario;
     
     printf("input: 0 1 0 1");
-    cenario = "input: 0 1 0 1 - deve retornoar true";
+    cenario = "input: 0 1 0 1 - A cadeia pertence a linguagem";
 
     push(pilha, 0);
     push(pilha, 1);
@@ -167,7 +167,7 @@ void testes(){
     libera(pilha);
 
     printf("input: 0 1 0 0 1");
-    cenario = "input: 0 1 0 0 1 - deve retornoar true";
+    cenario = "input: 0 1 0 0 1 - A cadeia pertence a linguagem";
     pilha = cria();
     push(pilha, 0);
     push(pilha, 1);
@@ -180,8 +180,25 @@ void testes(){
     assertValor(cenario, TRUE, verificaValores(5, pilha));
     libera(pilha);
 
+    printf("input: 0 1 1 1 0 1 1 1");
+    cenario = "input: 0 1 1 1 0 1 1 1 - A cadeia pertence a linguagem";
+    pilha = cria();
+    push(pilha, 0);
+    push(pilha, 1);
+    push(pilha, 1);
+    push(pilha, 1);
+    push(pilha, 0);
+    push(pilha, 1);
+    push(pilha, 1);
+    push(pilha, 1);
+    
+    printPilha(pilha);
+
+    assertValor(cenario, TRUE, verificaValores(8, pilha));
+    libera(pilha);
+
     printf("input: 1 1 0 0 1");
-    cenario = "input: 1 1 0 0 1 - deve retornoar false";
+    cenario = "input: 1 1 0 0 1 - A cadeia NÃO pertence a linguagem";
     pilha = cria();
     push(pilha, 1);
     push(pilha, 1);
@@ -195,7 +212,7 @@ void testes(){
     libera(pilha);
 
     printf("input: 0 1 0 0 1 1");
-    cenario = "input: 0 1 0 0 1 1 - deve retornoar false";
+    cenario = "input: 0 1 0 0 1 1 - A cadeia NÃO pertence a linguagem";
     pilha = cria();
     push(pilha, 0);
     push(pilha, 1);
@@ -210,7 +227,7 @@ void testes(){
     libera(pilha);
 
     printf("input: 0 1 0 0 1 1 0 0");
-    cenario = "input: 0 1 0 0 1 1 0 0 - deve retornoar false";
+    cenario = "input: 0 1 0 0 1 1 0 0 - A cadeia NÃO pertence a linguagem";
     pilha = cria();
     push(pilha, 0);
     push(pilha, 1);
@@ -224,32 +241,6 @@ void testes(){
     printPilha(pilha);
 
     assertValor(cenario, FALSE, verificaValores(8, pilha));
-    libera(pilha);
-
-    printf("input: 0 1 0 0");
-    cenario = "input: 0 1 0 0 - deve retornoar false";
-    pilha = cria();
-    push(pilha, 0);
-    push(pilha, 1);
-    push(pilha, 0);
-    push(pilha, 0);
-    
-    printPilha(pilha);
-
-    assertValor(cenario, FALSE, verificaValores(4, pilha));
-    libera(pilha);
-
-    printf("input: 0 0 0 0");
-    cenario = "input: 0 0 0 0 - deve retornoar false";
-    pilha = cria();
-    push(pilha, 0);
-    push(pilha, 0);
-    push(pilha, 0);
-    push(pilha, 0);
-    
-    printPilha(pilha);
-
-    assertValor(cenario, FALSE, verificaValores(4, pilha));
     libera(pilha);
 
     printf("********************************************************\n");
