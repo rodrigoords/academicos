@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: br.com.metrocamp.simgraduate.integration.CucumberIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 80, Failures: 0, Errors: 0, Skipped: 69, Time elapsed: 0.611 s - in br.com.metrocamp.simgraduate.integration.CucumberIntegrationTest

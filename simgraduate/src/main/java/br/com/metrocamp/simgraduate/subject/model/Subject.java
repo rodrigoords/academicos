@@ -1,9 +1,10 @@
 package br.com.metrocamp.simgraduate.subject.model;
 
 import br.com.metrocamp.simgraduate.course.model.Course;
-import br.com.metrocamp.simgraduate.topic.Topic;
+import br.com.metrocamp.simgraduate.topic.model.Topic;
 import br.com.metrocamp.simgraduate.utils.base.model.BaseModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -11,9 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -38,12 +38,7 @@ public class Subject extends BaseModel {
   @Column
   private String observation;
 
-  @ManyToMany
-  @JoinTable(
-          name = "subjects_topics",
-          joinColumns = { @JoinColumn(name = "id_topics", referencedColumnName = "id") },
-          inverseJoinColumns = { @JoinColumn(name = "id_subjects", referencedColumnName = "id") }
-  )
+  @OneToMany(mappedBy = "subject")
   @JsonIgnore
   private List<Topic> topics;
 

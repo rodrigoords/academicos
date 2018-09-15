@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="11" tests="11" time="0">
+<testcase classname="I want to test base skeleton behavior" name="I want to make a get request on base path" time="0">
+<skipped><![CDATA[Given Request with Authorization Header:....................................undefined
+When I make a GET call to "/courses" endpoint...............................undefined
+Then response status code should be 200.....................................undefined
+]]></skipped>
+</testcase>
+<testcase classname="I want to test base skeleton behavior" name="I want to get all courses in my database" time="0">
+<skipped><![CDATA[Given Request with Authorization Header:....................................undefined
+Given I have the following rows in the "courses" table:.....................undefined
+When I make a GET call to "/courses" endpoint...............................undefined
+Then response status code should be 200.....................................undefined
+And response should be json:................................................undefined
+]]></skipped>
+</testcase>
+<testcase classname="I want to test base skeleton behavior" name="I want to create a new course with api" time="0">
+<skipped><![CDATA[Given Request with Authorization Header:....................................undefined
+When I make a POST call to "/courses" endpoint with post body:..............undefined
+Then response status code should be 201.....................................undefined
+And response should be json:................................................undefined
+And I should have the following rows in the "courses" table:................undefined
+]]></skipped>
+</testcase>
+<testcase classname="I want to test base skeleton behavior" name="I want to link a course with subjects" time="0">
+<skipped><![CDATA[Given Request with Authorization Header:....................................undefined
+Given I have only the following rows in the "courses" table:................undefined
+And I have only the following rows in the "subjects" table:.................undefined
+When I make a POST call to "/courses/1/subjects" endpoint with post body:...undefined
+Then response status code should be 204.....................................undefined
+And I should have the following rows in any order in the "courses_subjects" table:.undefined
+]]></skipped>
+</testcase>
+<testcase classname="I want to test base skeleton behavior" name="I want to delete a exists subject link" time="0">
+<skipped><![CDATA[Given Request with Authorization Header:....................................undefined
+Given I have only the following rows in the "courses" table:................undefined
+And I have only the following rows in the "subjects" table:.................undefined
+And I have only the following rows in the "courses_subjects" table:.........undefined
+When I make a DELETE call to "/courses/1/subjects/1" endpoint...............undefined
+Then response status code should be 204.....................................undefined
+And I should have the following rows in the "courses" table:................undefined
+And I should have the following rows in the "subjects" table:...............undefined
+And I should have the following rows in the "courses_subjects" table:.......undefined
+]]></skipped>
+</testcase>
+<testcase classname="I want to test base skeleton behavior" name="I want to get all linked subjects" time="0">
+<skipped><![CDATA[Given Request with Authorization Header:....................................undefined
+Given I have only the following rows in the "courses" table:................undefined
+And I have only the following rows in the "subjects" table:.................undefined
+And I have only the following rows in the "courses_subjects" table:.........undefined
+When I make a GET call to "/courses/1/subjects" endpoint....................undefined
+Then response status code should be 200.....................................undefined
+And response should be json:................................................undefined
+]]></skipped>
+</testcase>
+<testcase classname="I want to test base skeleton behavior" name="I want to make a get request on base path" time="0">
+<skipped><![CDATA[Given Request with Authorization Header:....................................undefined
+When I make a GET call to "/subjects" endpoint..............................undefined
+Then response status code should be 200.....................................undefined
+]]></skipped>
+</testcase>
+<testcase classname="I want to test base skeleton behavior" name="I want to create a new subject with api" time="0">
+<skipped><![CDATA[Given Request with Authorization Header:....................................undefined
+When I make a POST call to "/subjects" endpoint with post body:.............undefined
+Then response status code should be 201.....................................undefined
+And response should be json:................................................undefined
+And I should have the following rows in the "subjects" table:...............undefined
+]]></skipped>
+</testcase>
+<testcase classname="I want to test base skeleton behavior" name="I want to get all topics" time="0">
+<skipped><![CDATA[Given Request with Authorization Header:....................................undefined
+Given I have only the following rows in the "subjects" table:...............undefined
+And I have only the following rows in the "topics" table:...................undefined
+When I make a GET call to "/subjects/1/topics" endpoint.....................undefined
+Then response status code should be 200.....................................undefined
+And response should be json:................................................undefined
+]]></skipped>
+</testcase>
+<testcase classname="I want to test base skeleton behavior" name="I want to make a get request on base path" time="0">
+<skipped><![CDATA[Given Request with Authorization Header:....................................undefined
+When I make a GET call to "/topics" endpoint................................undefined
+Then response status code should be 200.....................................undefined
+]]></skipped>
+</testcase>
+<testcase classname="I want to test base skeleton behavior" name="I want to create a new topic with api" time="0">
+<skipped><![CDATA[Given Request with Authorization Header:....................................undefined
+Given I have the following rows in the "subjects" table:....................undefined
+When I make a POST call to "/topics" endpoint with post body:...............undefined
+Then response status code should be 201.....................................undefined
+And response should be json:................................................undefined
+And I should have the following rows in the "topics" table:.................undefined
+]]></skipped>
+</testcase>
+</testsuite>

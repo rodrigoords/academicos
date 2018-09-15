@@ -8,7 +8,9 @@ import com.ninja_squad.dbsetup.operation.Insert;
 import com.ninja_squad.dbsetup.operation.Operation;
 import com.ninja_squad.dbsetup.operation.SqlOperation;
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.Before;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import gherkin.formatter.model.DataTableRow;
@@ -81,16 +83,20 @@ public class DatabaseSteps {
     boolean needCreatedDate = Boolean.FALSE;
     boolean needModifiedDate = Boolean.FALSE;
 
-    if(!columns.contains("data_criacao")){
-      columns.add("data_criacao");
-      needCreatedDate = Boolean.TRUE;
-    }
+    if (!columns.contains("$no_dates")) {
+      if(!columns.contains("created_date")){
+        columns.add("created_date");
+        needCreatedDate = Boolean.TRUE;
+      }
 
-    if(!columns.contains("data_alteracao")){
-      columns.add("data_alteracao");
-      needModifiedDate = Boolean.TRUE;
-    }
+      if(!columns.contains("last_modified_date")){
+        columns.add("last_modified_date");
+        needModifiedDate = Boolean.TRUE;
+      }
 
+    } else {
+      columns.remove("$no_dates");
+    }
 
     final List<Operation> operations = new ArrayList<>();
 
@@ -261,13 +267,6 @@ public class DatabaseSteps {
   @Before
   public void cleanDb() throws SQLException, ClassNotFoundException {
     this.resetAllH2Sequences();
-    this.resetTable("veiculos_categorias");
-    this.resetTable("calculos_customizados");
-    this.resetTable("valores_calculos");
-    this.resetTable("valores_viagem");
-    this.resetTable("formas_pagamento");
-    this.resetTable("usuarios");
-    this.resetTable("cidades");
-    this.resetTable("validacao_telefone");
   }
+
 }
